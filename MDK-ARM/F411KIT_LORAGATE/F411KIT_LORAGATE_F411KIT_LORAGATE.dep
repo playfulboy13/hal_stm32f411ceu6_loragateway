@@ -61,8 +61,8 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x63FCB6F1)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x63FCB6F1)
 I (../MDK-ARM/user_task.h)(0x69294B65)
 I (../MDK-ARM/uart.h)(0x68E084C4)
-I (../MDK-ARM/lora_gateway.h)(0x69291046)
-I (../MDK-ARM/esp32_data.h)(0x692943AB)
+I (../MDK-ARM/lora_gateway.h)(0x692BD981)
+I (../MDK-ARM/esp32_data.h)(0x692BD5D6)
 I (../LoRa/LoRa.h)(0x68E08B71)
 F (.\user_task.h)(0x69294B65)()
 F (.\user_task.c)(0x69294BA4)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../MDK-ARM -I ../LoRa-I.\RTE\_F411KIT_LORAGATE-IC:\Users\QUAN\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F411xE -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F411xE-o f411kit_loragate\user_task.o --omf_browse f411kit_loragate\user_task.crf --depend f411kit_loragate\user_task.d)
@@ -124,12 +124,12 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x63FCB6F1)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x63FCB6F1)
 I (../MDK-ARM/user_task.h)(0x69294B65)
 I (../MDK-ARM/uart.h)(0x68E084C4)
-I (../MDK-ARM/lora_gateway.h)(0x69291046)
-I (../MDK-ARM/esp32_data.h)(0x692943AB)
+I (../MDK-ARM/lora_gateway.h)(0x692BD981)
+I (../MDK-ARM/esp32_data.h)(0x692BD5D6)
 I (../LoRa/LoRa.h)(0x68E08B71)
-F (.\lora_gateway.h)(0x69291046)()
-F (.\lora_gateway.c)(0x69294E90)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../MDK-ARM -I ../LoRa-I.\RTE\_F411KIT_LORAGATE-IC:\Users\QUAN\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F411xE -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F411xE-o f411kit_loragate\lora_gateway.o --omf_browse f411kit_loragate\lora_gateway.crf --depend f411kit_loragate\lora_gateway.d)
-I (lora_gateway.h)(0x69291046)
+F (.\lora_gateway.h)(0x692BD981)()
+F (.\lora_gateway.c)(0x692BD9D1)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../MDK-ARM -I ../LoRa-I.\RTE\_F411KIT_LORAGATE-IC:\Users\QUAN\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F411xE -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F411xE-o f411kit_loragate\lora_gateway.o --omf_browse f411kit_loragate\lora_gateway.crf --depend f411kit_loragate\lora_gateway.d)
+I (lora_gateway.h)(0x692BD981)
 I (../Core/Inc/main.h)(0x69291046)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x63FCB78F)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x68E081B6)
@@ -187,8 +187,8 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x63FCB6F1)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x63FCB6F1)
 I (../MDK-ARM/user_task.h)(0x69294B65)
 I (../MDK-ARM/uart.h)(0x68E084C4)
-I (../MDK-ARM/lora_gateway.h)(0x69291046)
-I (../MDK-ARM/esp32_data.h)(0x692943AB)
+I (../MDK-ARM/lora_gateway.h)(0x692BD981)
+I (../MDK-ARM/esp32_data.h)(0x692BD5D6)
 I (../LoRa/LoRa.h)(0x68E08B71)
 F (.\ir.h)(0x68E0CDB0)()
 F (.\ir.c)(0x68E0CDB0)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../MDK-ARM -I ../LoRa-I.\RTE\_F411KIT_LORAGATE-IC:\Users\QUAN\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F411xE -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F411xE-o f411kit_loragate\ir.o --omf_browse f411kit_loragate\ir.crf --depend f411kit_loragate\ir.d)
@@ -231,7 +231,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x63FCB78F)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x63FCB78F)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x63FCB78F)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x63FCB78F)
-F (../Core/Src/main.c)(0x69290D5E)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../MDK-ARM -I ../LoRa-I.\RTE\_F411KIT_LORAGATE-IC:\Users\QUAN\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F411xE -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F411xE-o f411kit_loragate\main.o --omf_browse f411kit_loragate\main.crf --depend f411kit_loragate\main.d)
+F (../Core/Src/main.c)(0x692BD9D1)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../MDK-ARM -I ../LoRa-I.\RTE\_F411KIT_LORAGATE-IC:\Users\QUAN\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F411xE -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F411xE-o f411kit_loragate\main.o --omf_browse f411kit_loragate\main.crf --depend f411kit_loragate\main.d)
 I (../Core/Inc/main.h)(0x69291046)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x63FCB78F)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x68E081B6)
@@ -289,8 +289,8 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x63FCB6F1)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x63FCB6F1)
 I (../MDK-ARM/user_task.h)(0x69294B65)
 I (../MDK-ARM/uart.h)(0x68E084C4)
-I (../MDK-ARM/lora_gateway.h)(0x69291046)
-I (../MDK-ARM/esp32_data.h)(0x692943AB)
+I (../MDK-ARM/lora_gateway.h)(0x692BD981)
+I (../MDK-ARM/esp32_data.h)(0x692BD5D6)
 I (../LoRa/LoRa.h)(0x68E08B71)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x63FCB6F1)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x63FCB6F1)
@@ -352,8 +352,8 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x63FCB6F1)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x63FCB6F1)
 I (../MDK-ARM/user_task.h)(0x69294B65)
 I (../MDK-ARM/uart.h)(0x68E084C4)
-I (../MDK-ARM/lora_gateway.h)(0x69291046)
-I (../MDK-ARM/esp32_data.h)(0x692943AB)
+I (../MDK-ARM/lora_gateway.h)(0x692BD981)
+I (../MDK-ARM/esp32_data.h)(0x692BD5D6)
 I (../LoRa/LoRa.h)(0x68E08B71)
 F (../Core/Src/stm32f4xx_it.c)(0x69251B5C)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../MDK-ARM -I ../LoRa-I.\RTE\_F411KIT_LORAGATE-IC:\Users\QUAN\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F411xE -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F411xE-o f411kit_loragate\stm32f4xx_it.o --omf_browse f411kit_loragate\stm32f4xx_it.crf --depend f411kit_loragate\stm32f4xx_it.d)
 I (../Core/Inc/main.h)(0x69291046)
@@ -413,8 +413,8 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x63FCB6F1)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x63FCB6F1)
 I (../MDK-ARM/user_task.h)(0x69294B65)
 I (../MDK-ARM/uart.h)(0x68E084C4)
-I (../MDK-ARM/lora_gateway.h)(0x69291046)
-I (../MDK-ARM/esp32_data.h)(0x692943AB)
+I (../MDK-ARM/lora_gateway.h)(0x692BD981)
+I (../MDK-ARM/esp32_data.h)(0x692BD5D6)
 I (../LoRa/LoRa.h)(0x68E08B71)
 I (../Core/Inc/stm32f4xx_it.h)(0x69251B5C)
 F (../Core/Src/stm32f4xx_hal_msp.c)(0x69251B5C)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../MDK-ARM -I ../LoRa-I.\RTE\_F411KIT_LORAGATE-IC:\Users\QUAN\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F411xE -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F411xE-o f411kit_loragate\stm32f4xx_hal_msp.o --omf_browse f411kit_loragate\stm32f4xx_hal_msp.crf --depend f411kit_loragate\stm32f4xx_hal_msp.d)
@@ -475,8 +475,8 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x63FCB6F1)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x63FCB6F1)
 I (../MDK-ARM/user_task.h)(0x69294B65)
 I (../MDK-ARM/uart.h)(0x68E084C4)
-I (../MDK-ARM/lora_gateway.h)(0x69291046)
-I (../MDK-ARM/esp32_data.h)(0x692943AB)
+I (../MDK-ARM/lora_gateway.h)(0x692BD981)
+I (../MDK-ARM/esp32_data.h)(0x692BD5D6)
 I (../LoRa/LoRa.h)(0x68E08B71)
 F (../Core/Src/stm32f4xx_hal_timebase_tim.c)(0x68E081B5)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../MDK-ARM -I ../LoRa-I.\RTE\_F411KIT_LORAGATE-IC:\Users\QUAN\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F411xE -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F411xE-o f411kit_loragate\stm32f4xx_hal_timebase_tim.o --omf_browse f411kit_loragate\stm32f4xx_hal_timebase_tim.crf --depend f411kit_loragate\stm32f4xx_hal_timebase_tim.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x63FCB78F)
@@ -517,9 +517,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h)(0x63FCB78F)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x63FCB78F)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x63FCB78F)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x63FCB78F)
-F (.\esp32_data.h)(0x692943AB)()
-F (.\esp32_data.c)(0x69294C71)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../MDK-ARM -I ../LoRa-I.\RTE\_F411KIT_LORAGATE-IC:\Users\QUAN\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F411xE -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F411xE-o f411kit_loragate\esp32_data.o --omf_browse f411kit_loragate\esp32_data.crf --depend f411kit_loragate\esp32_data.d)
-I (esp32_data.h)(0x692943AB)
+F (.\esp32_data.h)(0x692BD5D6)()
+F (.\esp32_data.c)(0x692BD981)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../MDK-ARM -I ../LoRa-I.\RTE\_F411KIT_LORAGATE-IC:\Users\QUAN\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F411xE -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F411xE-o f411kit_loragate\esp32_data.o --omf_browse f411kit_loragate\esp32_data.crf --depend f411kit_loragate\esp32_data.d)
+I (esp32_data.h)(0x692BD5D6)
 I (../Core/Inc/main.h)(0x69291046)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x63FCB78F)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x68E081B6)
@@ -577,8 +577,8 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x63FCB6F1)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x63FCB6F1)
 I (../MDK-ARM/user_task.h)(0x69294B65)
 I (../MDK-ARM/uart.h)(0x68E084C4)
-I (../MDK-ARM/lora_gateway.h)(0x69291046)
-I (../MDK-ARM/esp32_data.h)(0x692943AB)
+I (../MDK-ARM/lora_gateway.h)(0x692BD981)
+I (../MDK-ARM/esp32_data.h)(0x692BD5D6)
 I (../LoRa/LoRa.h)(0x68E08B71)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c)(0x63FCB78F)(--c99 -c --cpu Cortex-M4.fp.sp -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../MDK-ARM -I ../LoRa-I.\RTE\_F411KIT_LORAGATE-IC:\Users\QUAN\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F411xE -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F411xE-o f411kit_loragate\stm32f4xx_hal_adc.o --omf_browse f411kit_loragate\stm32f4xx_hal_adc.crf --depend f411kit_loragate\stm32f4xx_hal_adc.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x63FCB78F)
@@ -1720,6 +1720,6 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x63FCB6F1)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x63FCB6F1)
 I (../MDK-ARM/user_task.h)(0x69294B65)
 I (../MDK-ARM/uart.h)(0x68E084C4)
-I (../MDK-ARM/lora_gateway.h)(0x69291046)
-I (../MDK-ARM/esp32_data.h)(0x692943AB)
+I (../MDK-ARM/lora_gateway.h)(0x692BD981)
+I (../MDK-ARM/esp32_data.h)(0x692BD5D6)
 I (../LoRa/LoRa.h)(0x68E08B71)

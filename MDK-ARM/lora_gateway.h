@@ -18,6 +18,7 @@ typedef struct {
 } NodeData_t;
 
 extern NodeData_t g_node_data[3];
+extern uint8_t state;
 
 /*NODE 1*/
 
@@ -39,14 +40,33 @@ typedef struct
 	
 }sensor_data_t;
 
+extern uint8_t relay_cmd[3];
+
 extern sensor_data_t sensor_data;
 extern sensor_data_t sensor_data2;
 extern sensor_data_t sensor_data3;
+
+extern uint8_t node_id_relay;
+
+
+
+// ====================
+// Ki?u l?nh relay
+// ====================
+typedef struct {
+    uint8_t node_id;
+    uint8_t relay_state;
+} relay_cmd_t;
+
+// ====================
+// Queue handle
+// ====================
+extern QueueHandle_t relayQueue;
 
 void lora_init_config(void);
 void TaskReceiveLora(void *pvParameters);
 void TaskSendLora(void *pvParameters);
 void TaskMaster(void *pvParameters);
-
+void TaskControlRelay(void* pvParameters);
 
 #endif

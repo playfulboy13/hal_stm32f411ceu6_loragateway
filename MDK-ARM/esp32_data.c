@@ -3,6 +3,11 @@
 uint16_t lost_packets = 0;   // ví d?: d?m gói tin m?t
 uint16_t total_packets = 0;  // t?ng gói dã g?i
 
+#define UART2_RX_BUF_SIZE 64
+QueueHandle_t uart2Queue;      // Queue nh?n l?nh UART2
+uint8_t uart2_rx_byte;          // byte nh?n t?ng byte
+
+
 uint16_t CRC16_Modbus(uint8_t *buf, uint16_t len)
 {
     uint16_t crc = 0xFFFF;
@@ -98,4 +103,69 @@ void TaskData(void *pvParameters)
         vTaskDelay(pdMS_TO_TICKS(500));
     }
 }
+
+
+void TaskRelayUART(void *pvParameters)
+{
+    relay_cmd_t cmd;
+    (void)pvParameters;
+
+    while(1)
+    {
+        if(xQueueReceive(uart2Queue, &cmd, portMAX_DELAY) == pdTRUE)
+        {
+            // =============================
+            //  1) C?p nh?t bi?n chung
+            // =============================
+            node_id_relay = cmd.node_id;
+            state         = cmd.relay_state;   // b?t/t?t LED ho?c relay
+
+            // =============================
+            //  2) G?i l?nh vào queue di?u khi?n node
+            // =============================
+            relay_cmd_t node_cmd = {cmd.node_id, cmd.relay_state};
+            xQueueSend(relayQueue, &node_cmd, portMAX_DELAY);
+
+            // =============================
+            //  3) Debug log ra UART1
+            // =============================
+            char log[64];
+            sprintf(log, "UART2 CMD Received: Node %02X, State 0x%02X\r\n",
+                    cmd.node_id, cmd.relay_state);
+            //HAL_UART_Transmit(&huart1, (uint8_t*)log, strlen(log), 50);
+        }
+    }
+}
+
+
+
+
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+    static uint8_t packet[4];
+    static uint8_t packet_index = 0;
+
+    if(huart->Instance == USART2)
+    {
+        packet[packet_index++] = uart2_rx_byte;
+
+        if(packet_index >= 4)
+        {
+            // Chu?i d?nh d?ng: [START][NODE_ID][STATE][END]
+            if(packet[0] == 0xAA && packet[3] == 0x55)
+            {
+                relay_cmd_t cmd;
+                cmd.node_id = packet[1];
+                cmd.relay_state = packet[2];
+                xQueueSendFromISR(uart2Queue, &cmd, NULL);
+            }
+            packet_index = 0;
+        }
+
+        // Ti?p t?c nh?n byte ti?p theo
+        HAL_UART_Receive_IT(&huart2, &uart2_rx_byte, 1);
+    }
+}
+
 

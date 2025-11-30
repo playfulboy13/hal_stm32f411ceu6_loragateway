@@ -103,6 +103,8 @@ int main(void)
 	__DSB();
 	__ISB();
 	lora_semaphore=xSemaphoreCreateBinary();
+	uart2Queue = xQueueCreate(10, sizeof(relay_cmd_t));
+	relayQueue = xQueueCreate(10, sizeof(relay_cmd_t));
 
   /* USER CODE END 1 */
 
@@ -132,6 +134,8 @@ int main(void)
   MX_RTC_Init();
   MX_TIM1_Init();
   MX_USART2_UART_Init();
+	HAL_UART_Receive_IT(&huart2, &uart2_rx_byte, 1);
+
   /* USER CODE BEGIN 2 */
 	xTaskCreate(TaskMaster,"TaskMaster",512,NULL,1,NULL);
 	//xTaskCreate(TaskReceiveLora,"TaskReceiveLora",256,NULL,1,NULL);
@@ -140,6 +144,8 @@ int main(void)
 	xTaskCreate(TaskRelay,"TaskRelay",128,NULL,1,NULL);
 	//xTaskCreate(TaskSendLora,"TaskSendLora",256,NULL,1,NULL	);
 	xTaskCreate(TaskData,"TaskData",512,NULL,1,NULL);
+	//xTaskCreate(TaskControlRelay,"TaskControlRelay",256,NULL,1,NULL);
+	 xTaskCreate(TaskRelayUART, "RelayUARTTask", 256, NULL, 1, NULL);
 	vTaskStartScheduler();
 
   /* USER CODE END 2 */

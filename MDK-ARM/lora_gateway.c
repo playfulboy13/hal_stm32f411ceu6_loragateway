@@ -17,6 +17,17 @@ char debug[256];
 #define MAX_RETRY       3
 #define CMD_ACK         0xA1
 
+#define CMD_RELAY_CTRL  0xB1
+
+uint8_t relay_cmd[3]; // luu tr?ng thái 5 relay c?a t?ng node
+
+uint8_t state=0x00;
+
+uint8_t node_id_relay=0x03;
+
+QueueHandle_t relayQueue;
+
+
 // ===============================
 //   DANH SÁCH 3 NODE
 // ===============================
@@ -264,6 +275,26 @@ int node_index_from_id(uint8_t id)
 // ========================= TASK MASTER OPTIMIZED ======================
 // =====================================================================
 
+void master_send_relay(uint8_t node_id, uint8_t relay_state)
+{
+    uint8_t frame[16];
+    uint8_t idx = 0;
+
+    frame[idx++] = FRAME_START;
+    frame[idx++] = node_id;
+    frame[idx++] = CMD_RELAY_CTRL;
+    frame[idx++] = relay_state;
+
+    uint16_t crc = crc16_ccitt(&frame[1], 1 + 1 + 1); // node_id + CMD + data
+    frame[idx++] = (crc >> 8) & 0xFF;
+    frame[idx++] = crc & 0xFF;
+
+    frame[idx++] = FRAME_END;
+
+    LoRa_transmit(&myLoRa, frame, idx, 80);
+}
+
+
 void TaskMaster(void *pvParameters)
 {
     (void)pvParameters;
@@ -271,6 +302,7 @@ void TaskMaster(void *pvParameters)
 
     uint8_t rx_buf[64];
     uint8_t size;
+		relay_cmd_t cmd;
 
     for (;;)
     {
@@ -279,9 +311,31 @@ void TaskMaster(void *pvParameters)
             uint8_t node_id = node_list[n];
             bool success = false;
 
-            // === TÍNH TOTAL PACKET m?i l?n POLL 1 NODE ===
             total_packets++;
 
+            // ============================
+            //    1) G?I L?NH RELAY TRU?C
+            // ============================
+					
+						/*
+            uint8_t relay_state = relay_cmd[n];  // l?y relay c?n di?u khi?n
+            master_send_relay(node_id_relay, state);
+
+            HAL_UART_Transmit(&huart1,
+                (uint8_t*)"MASTER: Relay CMD sent\r\n",
+                23, 50);
+
+            vTaskDelay(pdMS_TO_TICKS(50)); */
+					
+					if(xQueueReceive(relayQueue, &cmd, pdMS_TO_TICKS(100)) == pdTRUE)
+					{
+							master_send_relay(cmd.node_id, cmd.relay_state);
+							vTaskDelay(pdMS_TO_TICKS(10));  // delay sau khi g?i
+					}
+
+            // ============================
+            //    2) G?I POLL READ SENSOR
+            // ============================
             for (int retry = 0; retry < MAX_RETRY; retry++)
             {
                 LoRa_startReceiving(&myLoRa);
@@ -291,9 +345,10 @@ void TaskMaster(void *pvParameters)
                 LoRa_transmit(&myLoRa, request, 4, 100);
 
                 char log_tx[80];
-                sprintf(log_tx, "MASTER: Request sent to NODE %02X (retry=%d)\r\n",
+                sprintf(log_tx,
+                        "MASTER: Request sent to NODE %02X (retry=%d)\r\n",
                         node_id, retry);
-                HAL_UART_Transmit(&huart1, (uint8_t*)log_tx, strlen(log_tx), 50);
+                HAL_UART_Transmit_DMA(&huart1, (uint8_t*)log_tx, strlen(log_tx));
 
                 uint32_t t0 = xTaskGetTickCount();
                 const TickType_t timeout_ticks = pdMS_TO_TICKS(500);
@@ -301,29 +356,27 @@ void TaskMaster(void *pvParameters)
 
                 while ((xTaskGetTickCount() - t0) < timeout_ticks)
                 {
-                    // =============================
-                    //    CÓ FRAME M?I T? INTERRUPT
-                    // =============================
                     if (lora_flag)
                     {
                         taskENTER_CRITICAL();
                         lora_flag = 0;
                         taskEXIT_CRITICAL();
 
-                        // Ð?c LIÊN T?C t?t c? gói trong FIFO
                         while (1)
                         {
                             size = LoRa_receive(&myLoRa, rx_buf, sizeof(rx_buf));
-                            if (size == 0)
-                                break; // không còn gói nào n?a
+                            if (size == 0) break;
 
                             rssi = LoRa_getRSSI(&myLoRa);
                             HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
 
-                            if (rx_buf[0] != FRAME_START || rx_buf[size - 1] != FRAME_END)
+                            if (rx_buf[0] != FRAME_START ||
+                                rx_buf[size - 1] != FRAME_END)
                                 continue;
 
-                            // ======== DATA FRAME ========
+                            // ====================
+                            //     DATA FRAME
+                            // ====================
                             if (size >= 40 && rx_buf[1] == node_id)
                             {
                                 uint8_t len = rx_buf[2];
@@ -341,9 +394,9 @@ void TaskMaster(void *pvParameters)
                                 if (crc_calc != crc_recv)
                                     continue;
 
-                                // ------- Parse Sensor -------
                                 float sensor[8];
                                 int offset = 3;
+
                                 for (int i = 0; i < 8; i++)
                                 {
                                     sensor[i] = bytes_to_float(&rx_buf[offset]);
@@ -369,48 +422,44 @@ void TaskMaster(void *pvParameters)
 
                                 received = true;
                                 success  = true;
-                                break; // dúng DATA ? không c?n d?c ti?p
+                                break;
                             }
 
-                            // ======== ACK FRAME ========
+                            // ====================
+                            //         ACK
+                            // ====================
                             if (size == 4 &&
                                 rx_buf[1] == node_id &&
                                 rx_buf[2] == CMD_ACK)
                             {
-                                // ch? b? qua ACK, không break
                                 continue;
                             }
                         }
                     }
 
-                    if (received)
-                        break;
+                    if (received) break;
 
                     vTaskDelay(pdMS_TO_TICKS(5));
                 }
 
-                if (received)
-                    break;
+                if (received) break;
 
-                // ==== thông báo retry ====
                 char debug[80];
                 sprintf(debug, "MASTER: Retry %d for NODE %02X...\r\n",
                         retry + 1, node_id);
-                HAL_UART_Transmit(&huart1, (uint8_t*)debug, strlen(debug), 30);
+                HAL_UART_Transmit_DMA(&huart1, (uint8_t*)debug, strlen(debug));
 
                 vTaskDelay(pdMS_TO_TICKS(80));
             }
 
-            // ===============================
-            // NODE KHÔNG TR? L?I ? LOST PACKET
-            // ===============================
             if (!success)
             {
                 lost_packets++;
 
                 char debug[80];
-                sprintf(debug, "MASTER: NO RESPONSE FROM NODE %02X!\r\n", node_id);
-                HAL_UART_Transmit(&huart1, (uint8_t*)debug, strlen(debug), 30);
+                sprintf(debug,
+                        "MASTER: NO RESPONSE FROM NODE %02X!\r\n", node_id);
+                HAL_UART_Transmit_DMA(&huart1, (uint8_t*)debug, strlen(debug));
 
                 int idx = node_index_from_id(node_id);
                 if (idx >= 0)
@@ -431,14 +480,52 @@ void TaskMaster(void *pvParameters)
 
 
 
-
 ///////////////////////////////////////////////////////////////////////////
+// node_id_relay và state là bi?n dùng chung v?i TaskLed bên Node
 
 
+static void node_control(uint8_t id, uint8_t st)
+{
+    relay_cmd_t cmd = {id, st};
+    xQueueSend(relayQueue, &cmd, portMAX_DELAY);
+}
 
+void TaskControlRelay(void* pvParameters)
+{
+    (void)pvParameters;
+	
+	
 
+    while(1)
+    {
+        // Node 0x01 tu?n t? b?t LED1->LED4
+        for(uint8_t i=0; i<4; i++)
+        {
+            node_control(0x01, 1 << i);
+            vTaskDelay(pdMS_TO_TICKS(200));
+        }
+        node_control(0x01, 0x00); // t?t t?t c?
+        vTaskDelay(pdMS_TO_TICKS(200));
+				
+				// Node 0x02 tu?n t? b?t LED1->LED4
+        for(uint8_t i=0; i<4; i++)
+        {
+            node_control(0x02, 1 << i);
+            vTaskDelay(pdMS_TO_TICKS(200));
+        }
+        node_control(0x01, 0x00); // t?t t?t c?
+        vTaskDelay(pdMS_TO_TICKS(200));
 
-
+        // Node 0x03 tu?n t? b?t LED1->LED4
+        for(uint8_t i=0; i<4; i++)
+        {
+            node_control(0x03, 1 << i);
+            vTaskDelay(pdMS_TO_TICKS(200));
+        }
+        node_control(0x03, 0x00); // t?t t?t c?
+        vTaskDelay(pdMS_TO_TICKS(200));
+    }
+}
 
 
 
